@@ -85,15 +85,16 @@ SELECT company_name , revenue
 FROM fortune_companies
 WHERE revenue > 300
 ORDER BY revenue DESC;
---INSIGHTS:
+
 
 
 ---Basic filtering Query 4: Which company have more than 10,000 employees AND revenue > 200?
 SELECT company_name , employees
 FROM fortune_companies
 WHERE employees > 10000
-AND revenue > 200;
---INSIGHTS:
+AND revenue > 200
+ORDER BY employees DESC;
+--INSIGHTS: Technology and energy companies may require fewer employees to generate large revenue compared to retail and logistics heavy industries.--INSIGHTS:
 
 ---Basic filtering Query 5: Which companies are in Healthcare OR Finance?
 SELECT company_name , industry 
@@ -101,7 +102,7 @@ FROM fortune_companies
 WHERE industry = 'Healthcare'
 OR industry = 'Finance'
 ;
---INSIGHTS:
+
 
 
 ------Business insight------
@@ -111,9 +112,8 @@ SELECT company_name , industry , paid_time_off_days
 FROM fortune_companies
 WHERE industry = 'Technology'
 AND paid_time_off_days > 20
-;
---INSIGHTS:
-
+ORDER BY paid_time_off_days DESC;
+--INSIGHTS: Companies offering 22-24 PTO days may prioritize employee well-being and work life balance as part of their organizational culture.
 
 ------'Pattern and Sets'------
 
@@ -160,15 +160,14 @@ FROM fortune_companies
 WHERE revenue > 260
 AND employees < 10000
 ORDER BY revenue DESC, employees DESC;
---INSIGHTS:
-
+--INSIGHTS: Output could suggest that companies with high revenue and low employee count may indicate strong operational efficency or high value business models.
 
 --Query 14: Which companies offer healthcare benefits?
 SELECT company_name , healthcare_benefits
 FROM fortune_companies
 WHERE healthcare_benefits = 1;
 
---Query 15: WHich companies have NO Healthcare benifits? 
+--Query 15: Which companies have NO Healthcare benifits? 
 SELECT company_name , healthcare_benefits
 FROM fortune_companies 
 WHERE healthcare_benefits = 0;
@@ -193,7 +192,7 @@ avg_employee_tenure AS Avg_Tenure_Years
 FROM fortune_companies
 WHERE avg_employee_tenure > 6
 ORDER BY avg_employee_tenure DESC;
---INSIGHTS:
+--INSIGHTS: A workforce with longer tenure may contribute to greater institutional knowledge, operational consistency and reduced training costs.
 
 
 
@@ -220,8 +219,7 @@ SELECT company_name , revenue , employees,
 ROUND(revenue / employees, 2) AS Revenue_Per_Employee
 FROM fortune_companies
 ORDER BY Revenue_Per_Employee DESC;
---INSIGHTS:
-
+--INSIGHTS: Companies with higher revenue per employee may operate more efficiently by generating strong financial performance with smaller workforces
 
 
 ---Which companies are LEAST efficient?
@@ -231,8 +229,7 @@ SELECT company_name , revenue , employees,
 ROUND(revenue / employees, 2) AS Revenue_Per_Employee
 FROM fortune_companies
 ORDER BY Revenue_Per_Employee ASC;
---INSIGHTS:
-
+--INSIGHTS: companies with lower revenue per employee may rely more heavily on customer facing roles and physical operations rather than scalable digital services.
 
 
 -----Using CASE statments to categorize data-----
